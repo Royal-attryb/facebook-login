@@ -1,12 +1,21 @@
 function App() {
+
+    function handleLogin () {
+        window.FB.login(
+            function(response) {
+                console.log(response);
+            },
+            {
+                config_id: '1045272757389612',
+                response_type: 'code',
+                override_default_response_type: true
+            }
+        );
+    }
+
     return (
         <div className="App">
-            <a 
-                href="https://www.facebook.com/dialog/oauth?client_id=1030096775084808&display=page&extras={'setup':{'channel':'IG_API_ONBOARDING'}}&redirect_uri=https://successful-login-page.vercel.app/&response_type=token&scope=instagram_basic,pages_read_engagement,pages_show_list,business_management"
-                target="blank"
-            >
-                Login
-            </a>
+            <button onClick={handleLogin}>Login</button>
         </div>
     );
 }
